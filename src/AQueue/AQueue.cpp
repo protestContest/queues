@@ -16,9 +16,12 @@ AQueue::~AQueue() {
 void AQueue::enqueue(int i) {
 	if (queue_size >= capacity) {
 		int* newbuffer = new int[capacity*2];
+		int* oldbuffer = ringbuffer;
 		for (int i = 0; i < capacity; ++i) {
-			newbuffer[i] = ringbuffer[(front+i)%capacity];
+			newbuffer[i] = oldbuffer[(front+i)%capacity];
 		}
+		ringbuffer = newbuffer;
+		delete[] oldbuffer;
 		front = 0;
 		back = queue_size;
 		capacity *= 2;
@@ -33,7 +36,10 @@ void AQueue::enqueue(int i) {
 }
 
 int AQueue::dequeue() {
-	return 0;
+	int temp = ringbuffer[front];
+	front = ++front % capacity;
+	--queue_size;
+	return temp;
 }
 
 int AQueue::size() {

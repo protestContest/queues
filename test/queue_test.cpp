@@ -26,7 +26,7 @@ TEST(AQueueTest, EnqueueDequeue) {
 		q->enqueue(i);
 	}
 
-	EXPECT_EQ(q->dequeue(), 15);
+	EXPECT_EQ(15, q->dequeue());
 
 	for (int i = 13; i <= 1; ++i) {
 		EXPECT_EQ(i, q->dequeue());

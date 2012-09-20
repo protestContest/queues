@@ -3,17 +3,17 @@
 
 class AQueue {
 	private:
-	int capacity;
-	int* ringbuffer;
-	int front;
-	int back;
-	int queue_size;
+	int capacity;	// size of ringbuffer
+	int* ringbuffer;	// stores elements
+	int front;	// index of element in front
+	int back;	// index of next free space at the back
+	int queue_size;		// num elements
 	
 	public:
 	AQueue();
 	~AQueue();
-	void enqueue(int i);
-	int dequeue();
+	void enqueue(int i);	// add to back
+	int dequeue();	// take from front
 	int size();
 
 };

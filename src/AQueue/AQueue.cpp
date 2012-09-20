@@ -1,5 +1,6 @@
 #include "AQueue.h"
 #include <assert.h>
+#include <cmath>
 
 AQueue::AQueue() {
 	capacity = 10;
@@ -36,6 +37,23 @@ void AQueue::enqueue(int i) {
 }
 
 int AQueue::dequeue() {
+	assert(queue_size > 0);
+
+	if (queue_size <= 0.25*capacity) {
+		int* newbuffer = new int[(int) ceil(0.25*capacity)];
+		int* oldbuffer = ringbuffer;
+		for (int i = 0; i < queue_size; ++i) {
+			newbuffer[i] = oldbuffer[(front+i)%capacity];
+		}
+		ringbuffer = newbuffer;
+		delete[] oldbuffer;
+		front = 0;
+		back = queue_size;
+		capacity = (int) ceil(0.25*capacity);
+	}
+
+	assert(queue_size > 0.25*capacity);
+
 	int temp = ringbuffer[front];
 	front = ++front % capacity;
 	--queue_size;

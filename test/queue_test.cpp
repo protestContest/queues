@@ -19,7 +19,7 @@ TEST(AQueueTest, Enqueue) {
 	EXPECT_EQ(q->size(), 150);
 }
 
-TEST(AQueueTest, EnqueueDequeue) {
+TEST(AQueueTest, Dequeue) {
 	AQueue* q = new AQueue();
 
 	for (int i = 1; i <= 15; ++i) {

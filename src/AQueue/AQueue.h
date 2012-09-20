@@ -15,6 +15,7 @@ class AQueue {
 	void enqueue(int i);	// add to back
 	int dequeue();	// take from front
 	int size();
+	bool isEmpty();
 
 };
 

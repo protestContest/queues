@@ -33,3 +33,22 @@ TEST(AQueueTest, EnqueueDequeue) {
 	delete q;
 }
 
+TEST(AQueueTest, IsEmpty) {
+	AQueue* q = new AQueue();
+
+	EXPECT_EQ(true, q->isEmpty());
+
+	for (int i = 0; i < 50; ++i) {
+		q->enqueue(i);
+	}
+
+	EXPECT_EQ(false, q->isEmpty());
+
+	for (int i = 0; i < 50; ++i) {
+		q->dequeue();
+	}
+
+	EXPECT_EQ(true, q->isEmpty());
+
+	delete q;
+}

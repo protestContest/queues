@@ -45,3 +45,7 @@ int AQueue::dequeue() {
 int AQueue::size() {
 	return queue_size;
 }
+
+bool AQueue::isEmpty() {
+	return queue_size == 0;
+}

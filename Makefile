@@ -6,6 +6,9 @@ GTEST = $(LIB)/gtest-1.6.0
 GTEST_MAINA = $(GTEST)/make/gtest_main.a
 GTEST_INCLUDES = -I$(GTEST) -I$(GTEST)/include
 
+OBJECTS = $(TEST)/queue_test.o $(SRC)/AQueue/AQueue.o \
+		$(SRC)/LQueue/LQueue.o $(SRC)/VQueue/VQueue.o
+
 QTEST = $(TEST)/queue_test.o
 AQUEUE = $(SRC)/AQueue/AQueue.o
 LQUEUE = $(SRC)/LQueue/LQueue.o
@@ -14,32 +17,21 @@ VQUEUE = $(SRC)/VQueue/VQueue.o
 CPP = g++
 CPPFLAGS = -Wall -Wextra
 
-
-all: aqueue_test lqueue_test vqueue_test
-
-aqueue_test: $(QTEST) $(AQUEUE) $(GTEST_MAINA) 
-	$(CPP) $(CPPFLAGS) $(GTEST_MAINA) $(AQUEUE) $(QTEST) \
-			-pthread -o $(BUILD)/aqueue_test
-
-lqueue_test: $(QTEST) $(LQUEUE) $(GTEST_MAINA) 
-	$(CPP) $(CPPFLAGS) $(GTEST_MAINA) $(LQUEUE) $(QTEST) \
-			-pthread -o $(BUILD)/lqueue_test
-
-vqueue_test: $(QTEST) $(VQUEUE) $(GTEST_MAINA) 
-	$(CPP) $(CPPFLAGS) $(GTEST_MAINA) $(VQUEUE) $(QTEST) \
-			-pthread -o $(BUILD)/vqueue_test
+tests: $(OBJECTS) $(GTEST_MAINA)
+	$(CPP) $(CPPFLAGS) $(OBJECTS) $(GTEST_MAINA) \
+			-pthread -o $(BUILD)/queue_test
 
 
-$(QTEST): $(TEST)/queue_test.cpp
+$(TEST)/queue_test.o: $(TEST)/queue_test.cpp
 	cd $(TEST) && $(MAKE) queue_test
 
-$(AQUEUE): $(SRC)/AQueue/AQueue.cpp
+$(SRC)/AQueue/AQueue.o: $(SRC)/AQueue/AQueue.cpp
 	cd $(SRC)/AQueue && $(MAKE)
 
-$(LQUEUE): $(SRC)/LQueue/LQueue.cpp
+$(SRC)/LQueue/LQueue.o: $(SRC)/LQueue/LQueue.cpp
 	cd $(SRC)/LQueue && $(MAKE)
 
-$(VQUEUE): $(SRC)/VQueue/VQueue.cpp
+$(SRC)/VQueue/VQueue.o: $(SRC)/VQueue/VQueue.cpp
 	cd $(SRC)/VQueue && $(MAKE)
 
 $(GTEST_MAINA): $(GTEST)/src/*.cc $(GTEST)/src/*.h

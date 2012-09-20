@@ -16,7 +16,12 @@ AQueue::~AQueue() {
 void AQueue::enqueue(int i) {
 	if (queue_size >= capacity) {
 		int* newbuffer = new int[capacity*2];
-// TODO: double capacity here
+		for (int i = 0; i < capacity; ++i) {
+			newbuffer[i] = ringbuffer[(front+i)%capacity];
+		}
+		front = 0;
+		back = queue_size;
+		capacity *= 2;
 	}
 
 	assert(queue_size < capacity);

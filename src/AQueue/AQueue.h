@@ -5,8 +5,8 @@ class AQueue {
 	private:
 	int capacity;
 	int* ringbuffer;
-	int* front;
-	int* back;
+	int front;
+	int back;
 	int queue_size;
 	
 	public:

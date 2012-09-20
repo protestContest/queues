@@ -1,10 +1,11 @@
 #include "AQueue.h"
+#include <assert.h>
 
 AQueue::AQueue() {
 	capacity = 10;
 	ringbuffer = new int[capacity];
-	front = ringbuffer;
-	back = front;
+	front = 0;
+	back = 0;
 	queue_size = 0;
 }
 
@@ -13,7 +14,17 @@ AQueue::~AQueue() {
 }
 
 void AQueue::enqueue(int i) {
-	i++;
+	if (queue_size >= capacity) {
+		int* newbuffer = new int[capacity*2];
+// TODO: double capacity here
+	}
+
+	assert(queue_size < capacity);
+
+	ringbuffer[back] = i;
+	back = (++back) % capacity;
+
+	++queue_size;
 }
 
 int AQueue::dequeue() {
@@ -21,5 +32,5 @@ int AQueue::dequeue() {
 }
 
 int AQueue::size() {
-	return 0;
+	return queue_size;
 }

@@ -5,7 +5,12 @@ class LQueue {
 private:
 	
 public:
-
+	LQueue();
+	~LQueue();
+	bool isEmpty();
+	int size();
+	void enqueue(int);
+	int dequeue();
 };
 
 #endif

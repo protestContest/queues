@@ -12,14 +12,6 @@ Node::~Node() {
 	}
 }
 
-void Node::deleteChain(Node* n) {
-	if (n->next != 0) {
-		deleteChain(n->next);
-		delete n->next;
-	}
-
-	return;
-}
 
 int Node::getValue() {
 	return value;

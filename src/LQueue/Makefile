@@ -3,8 +3,11 @@ CPP = g++
 CPPFLAGS = -Wall -Wextra
 TEST = ../../test
 
-LQueue.o: LQueue.cpp 
-	$(CPP) $(CPPFLAGS) -c LQueue.cpp
+LQueue.o: LQueue.h LQueue.cpp Node.o
+	$(CPP) $(CPPFLAGS) -c LQueue.cpp -I./Node.h
+
+Node.o: Node.h Node.cpp
+	$(CPP) $(CPPFLAGS) -c Node.cpp
 
 clean:
 	rm -f *.o

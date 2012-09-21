@@ -5,9 +5,10 @@ class Node {
 private:
 	int value;
 	Node* next;
+	void deleteChain(Node*);
 
 public:
-	Node(int i);
+	Node(int);
 	~Node();
 	int getValue();
 	Node* getNext();

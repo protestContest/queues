@@ -11,6 +11,7 @@ public:
 	Node(int);
 	~Node();
 	int getValue();
+	bool hasNext();
 	Node* getNext();
 	void setNext(Node*);
 

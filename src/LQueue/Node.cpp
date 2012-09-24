@@ -6,10 +6,7 @@ Node::Node(int i) {
 }
 
 Node::~Node() {
-	if (next != 0) {
-		deleteChain(next);
-		delete next;
-	}
+
 }
 
 

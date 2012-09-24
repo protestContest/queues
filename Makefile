@@ -7,7 +7,8 @@ GTEST_MAINA = $(GTEST)/make/gtest_main.a
 GTEST_INCLUDES = -I$(GTEST) -I$(GTEST)/include
 
 OBJECTS = $(TEST)/queue_test.o $(SRC)/AQueue/AQueue.o \
-		$(SRC)/LQueue/LQueue.o $(SRC)/VQueue/VQueue.o
+		$(SRC)/LQueue/LQueue.o $(SRC)/VQueue/VQueue.o \
+		$(SRC)/LQueue/Node.o
 
 QTEST = $(TEST)/queue_test.o
 AQUEUE = $(SRC)/AQueue/AQueue.o

@@ -4,7 +4,7 @@ CPPFLAGS = -Wall -Wextra
 TEST = ../../test
 
 LQueue.o: LQueue.h LQueue.cpp Node.o
-	$(CPP) $(CPPFLAGS) -c LQueue.cpp -I./Node.h
+	$(CPP) $(CPPFLAGS) -c LQueue.cpp
 
 Node.o: Node.h Node.cpp
 	$(CPP) $(CPPFLAGS) -c Node.cpp

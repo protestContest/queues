@@ -1,5 +1,6 @@
 #include "LQueue.h"
 #include "Node.h"
+#include <assert.h>
 
 LQueue::LQueue() {
 	front = 0;
@@ -8,16 +9,17 @@ LQueue::LQueue() {
 }
 
 LQueue::~LQueue() {
-	if (back != 0) {
-		if (back->hasNext()) {
-			deleteList(back->getNext());
-			delete back->getNext();
+	if (front != 0) {
+		if (front->hasNext()) {
+			deleteList(front->getNext());
+			delete front->getNext();
 		}
 
-		delete back;
+		delete front;
 	}
 }
 
+// recursive magic
 void LQueue::deleteList(Node* n) {
 	if (n->hasNext()) {
 		deleteList(n->getNext());
@@ -32,13 +34,30 @@ bool LQueue::isEmpty() {
 }
 
 int LQueue::size() {
-	return 0;
+	return num_elements;
 }
 
 void LQueue::enqueue(int i) {
-	++i;
+	Node* newNode = new Node(i);
+	if (back != 0) {
+		back->setNext(newNode);
+	}
+	back = newNode;
+	if (front == 0) {
+		front = newNode;
+	}
+	++num_elements;
 }
 
 int LQueue::dequeue() {
-	return 0;
+	assert(!isEmpty());
+	assert(front != 0);
+
+	Node* curNode = front;
+	int val = curNode->getValue();
+	front = curNode->getNext();
+	delete curNode;
+	--num_elements;
+
+	return val;
 }

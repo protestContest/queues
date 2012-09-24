@@ -2,7 +2,11 @@
 #include "AQueue/AQueue.h"
 #include "LQueue/LQueue.h"
 #include "VQueue/VQueue.h"
+#include <iostream>
+using std::cout;
+using std::endl;
 
+// AQUEUETEST
 TEST(AQueueTest, Constructor) {
 	AQueue* q = new AQueue();
 
@@ -55,6 +59,8 @@ TEST(AQueueTest, IsEmpty) {
 	delete q;
 }
 
+
+// LQUEUETEST
 TEST(LQueueTest, Constructor) {
 	LQueue* q = new LQueue();
 
@@ -71,6 +77,8 @@ TEST(LQueueTest, Enqueue) {
 	}
 
 	EXPECT_EQ(q->size(), 150);
+
+	delete q;
 }
 
 TEST(LQueueTest, Dequeue) {
@@ -107,6 +115,7 @@ TEST(LQueueTest, IsEmpty) {
 	delete q;
 }
 /*
+// VQUEUETEST
 TEST(VQueueTest, Constructor) {
 	VQueue* q = new VQueue();
 

@@ -28,7 +28,7 @@ void LQueue::deleteList(Node* n) {
 }
 
 bool LQueue::isEmpty() {
-	return true;
+	return num_elements == 0;
 }
 
 int LQueue::size() {

@@ -3,7 +3,7 @@
 
 #include "Node.h"
 
-class LQueue {
+class Queue {
 private:
 	Node* front;
 	Node* back;
@@ -11,8 +11,8 @@ private:
 	void deleteList(Node*);
 	
 public:
-	LQueue();
-	~LQueue();
+	Queue();
+	~Queue();
 	bool isEmpty();
 	int size();
 	void enqueue(int);

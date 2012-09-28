@@ -2,13 +2,13 @@
 #include "Node.h"
 #include <assert.h>
 
-LQueue::LQueue() {
+Queue::Queue() {
 	front = 0;
 	back = 0;
 	num_elements = 0;
 }
 
-LQueue::~LQueue() {
+Queue::~Queue() {
 	if (front != 0) {
 		if (front->hasNext()) {
 			deleteList(front->getNext());
@@ -20,7 +20,7 @@ LQueue::~LQueue() {
 }
 
 // recursive magic
-void LQueue::deleteList(Node* n) {
+void Queue::deleteList(Node* n) {
 	if (n->hasNext()) {
 		deleteList(n->getNext());
 		delete n->getNext();
@@ -29,15 +29,15 @@ void LQueue::deleteList(Node* n) {
 	return;
 }
 
-bool LQueue::isEmpty() {
+bool Queue::isEmpty() {
 	return num_elements == 0;
 }
 
-int LQueue::size() {
+int Queue::size() {
 	return num_elements;
 }
 
-void LQueue::enqueue(int i) {
+void Queue::enqueue(int i) {
 	Node* newNode = new Node(i);
 	if (back != 0) {
 		back->setNext(newNode);
@@ -49,7 +49,7 @@ void LQueue::enqueue(int i) {
 	++num_elements;
 }
 
-int LQueue::dequeue() {
+int Queue::dequeue() {
 	assert(!isEmpty());
 	assert(front != 0);
 

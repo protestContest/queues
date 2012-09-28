@@ -1,7 +1,7 @@
-#ifndef __AQUEUE_H__
-#define __AQUEUE_H__
+#ifndef __QUEUE_H__
+#define __QUEUE_H__
 
-class AQueue {
+class Queue {
 	private:
 	int capacity;	// size of ringbuffer
 	int* ringbuffer;	// stores elements
@@ -10,8 +10,8 @@ class AQueue {
 	int queue_size;		// num elements
 	
 	public:
-	AQueue();
-	~AQueue();
+	Queue();
+	~Queue();
 	void enqueue(int i);	// add to back
 	int dequeue();	// take from front
 	int size();

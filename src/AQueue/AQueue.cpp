@@ -2,7 +2,7 @@
 #include <assert.h>
 #include <cmath>
 
-AQueue::AQueue() {
+Queue::Queue() {
 	capacity = 10;
 	ringbuffer = new int[capacity];
 	front = 0;
@@ -10,11 +10,11 @@ AQueue::AQueue() {
 	queue_size = 0;
 }
 
-AQueue::~AQueue() {
+Queue::~Queue() {
 	delete[] ringbuffer;
 }
 
-void AQueue::enqueue(int i) {
+void Queue::enqueue(int i) {
 	if (queue_size >= capacity) {
 		int* newbuffer = new int[capacity*2];
 		int* oldbuffer = ringbuffer;
@@ -36,7 +36,7 @@ void AQueue::enqueue(int i) {
 	++queue_size;
 }
 
-int AQueue::dequeue() {
+int Queue::dequeue() {
 	assert(queue_size > 0);
 
 	if (queue_size <= 0.25*capacity) {
@@ -60,10 +60,10 @@ int AQueue::dequeue() {
 	return temp;
 }
 
-int AQueue::size() {
+int Queue::size() {
 	return queue_size;
 }
 
-bool AQueue::isEmpty() {
+bool Queue::isEmpty() {
 	return queue_size == 0;
 }

@@ -15,7 +15,7 @@ CPP = g++
 CPPFLAGS = -Wall -Wextra
 
 
-all: lqueue_test 
+all: aqueue_test lqueue_test vqueue_test
 
 aqueue_test: aqueue $(QTEST) $(GTEST_MAINA)
 	$(CPP) $(CPPFLAGS) $(GTEST_MAINA) $(QTEST) $(SRC)/Queue.o \

@@ -10,7 +10,7 @@ int main() {
 	Queue* q = new Queue();
 	int start, end, elapsed, iterations;
 	double seconds;
-	iterations = 1000000;
+	iterations = 10000;
 
 	// Enqueue
 	cout << "Average enqueue time: ";
@@ -30,7 +30,7 @@ int main() {
 	cout << "Average dequeue time: ";
 	for (int i = 0; i < iterations; ++i) {
 		start = clock();
-		q->dequeue();
+		int x = q->dequeue();
 		end = clock();
 		elapsed = end - start;
 		seconds += (double) elapsed/CLOCKS_PER_SEC;
